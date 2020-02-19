@@ -1,4 +1,4 @@
-name: Aria2 CI
+name: tcping CI
 on:
   release:
     types: [published]
@@ -36,13 +36,13 @@ jobs:
     - name: Clone package
       run: |
         cd openwrt-sdk-x86-64_gcc-8.3.0_musl.Linux-x86_64/package/
-        git clone -b master https://github.com/aria2/aria2.git
+        git clone -b master https://github.com/jlzsss/tcping.git
     - name: Build ipk
       run: |
         cd openwrt-sdk-x86-64_gcc-8.3.0_musl.Linux-x86_64
-        make package/aria/compile V=s j=8
+        make package/tcping/compile V=s j=8
     - name: Upload - push to artifact file
       uses: actions/upload-artifact@v1
       with:
-        name: aria2
+        name: tcping
         path: openwrt-sdk-x86-64_gcc-8.3.0_musl.Linux-x86_64/bin/packages/x86_64/base
